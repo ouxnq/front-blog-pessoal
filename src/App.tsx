@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -8,8 +9,11 @@ import Cadastro from './pages/Cadastro/Cadastro';
 import Home from './pages/Home/Home';
 import ListaTemas from './components/Temas/listaTemas/listaTemas';
 import FormularioTema from './components/Temas/formularioTemas/FormularioTemas';
-import Footer from './components/Footer/Footer';
 import DeletarTema from './components/Temas/deletarTema/DeletarTemas';
+import ListaPostagens from './components/Postagens/listaPostagens/ListaPostagens';
+import FormularioPostagem from './components/Postagens/formularioPostagem/FormularioPostagem';
+import Footer from './components/Footer/Footer';
+import DeletarPostagem from './components/Postagens/deletarPostagem/DeletarPostagem';
 
 
 function App() {
@@ -28,6 +32,10 @@ function App() {
               <Route path="/cadastroTema" element={<FormularioTema />} />
               <Route path="/editarTema/:id" element={<FormularioTema />} />
               <Route path="/deletarTema/:id" element={<DeletarTema />} />
+              <Route path="/postagens" element={<ListaPostagens />} />
+              <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
+              <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
+              <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
             </Routes>
           </div>
           <Footer />

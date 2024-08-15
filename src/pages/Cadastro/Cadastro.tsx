@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Usuario from '../../models/Usuario'
 import { cadastrarUsuario } from '../../services/Service'
 import './Cadastro.css'
+import { toastAlerta } from '../../util/toastAlerta'
 
 function Cadastro() {
 
@@ -54,16 +55,16 @@ function Cadastro() {
 
             try {
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuarioResposta)
-                alert('Usuário cadastrado com sucesso')
+                toastAlerta('Usuário cadastrado com sucesso', 'sucesso')
 
             } catch (error) {
-                alert('Erro ao cadastrar o Usuário')
+                toastAlerta('Usuário cadastrado com sucesso', 'sucesso')
             }
 
         } else {
-            alert('Dados inconsistentes. Verifique as informações de cadastro.')
-            setUsuario({ ...usuario, senha: "" })
-            setConfirmaSenha("")
+            toastAlerta('Dados inconsistentes. Verifique as informações de cadastro.', 'erro')
+            setUsuario({ ...usuario, senha: "" }) // Reinicia o campo de Senha
+            setConfirmaSenha("")                  // Reinicia o campo de Confirmar Senha
         }
     }
 
@@ -71,7 +72,6 @@ function Cadastro() {
         <>
             <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold">
                 <div className="fundoCadastro hidden lg:block"></div>
-
                 <form className='flex justify-center items-center flex-col w-2/3 gap-3' onSubmit={cadastrarNovoUsuario}>
                     <h2 className='text-slate-900 text-5xl'>Cadastrar</h2>
                     <div className="flex flex-col w-full">
@@ -142,9 +142,7 @@ function Cadastro() {
                             Cadastrar
                         </button>
                     </div>
-
                 </form>
-
             </div>
         </>
     )

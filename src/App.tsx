@@ -1,25 +1,31 @@
-import React from 'react';
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
 import './App.css';
-
+import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
+import { ToastContainer } from 'react-toastify';
 import Navbar from './components/NavBar/NavBar';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
 import Home from './pages/Home/Home';
 import ListaTemas from './components/Temas/listaTemas/listaTemas';
 import FormularioTema from './components/Temas/formularioTemas/FormularioTemas';
-import DeletarTema from './components/Temas/deletarTema/DeletarTemas';
 import ListaPostagens from './components/Postagens/listaPostagens/ListaPostagens';
+import DeletarTema from './components/Temas/deletarTema/DeletarTemas';
 import FormularioPostagem from './components/Postagens/formularioPostagem/FormularioPostagem';
-import Footer from './components/Footer/Footer';
 import DeletarPostagem from './components/Postagens/deletarPostagem/DeletarPostagem';
+import Perfil from './pages/Perfil/Perfil';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
+
   return (
     <>
       <AuthProvider>
+        <ToastContainer />
         <BrowserRouter>
           <Navbar />
           <div className='min-h-[80vh]'>
@@ -36,6 +42,7 @@ function App() {
               <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
               <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
               <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+              <Route path="/perfil" element={<Perfil />} />
             </Routes>
           </div>
           <Footer />
@@ -44,4 +51,5 @@ function App() {
     </>
   );
 }
+
 export default App;
